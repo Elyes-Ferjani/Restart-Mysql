@@ -30,13 +30,15 @@
             .catch(new Error)
         }
         setInterval(()=>{
+            em.innerText = ""
             fetch(`${_url}getAll`,{
                 method: "GET",
             })
             .then(res=>{return res.json()})
             .then(data=>
                 data.forEach(el=>{
-                    let n = document.createTextNode(`${el[1]}\n`)
+                    let n = document.createElement('div')
+                    n.innerText =el[1]
                     em.append(n)
                 })
             )
